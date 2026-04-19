@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ZBittorrent 项目改动记录</title>
+    <style>
+        body { font-family: "宋体", "Microsoft YaHei", sans-serif; margin: 40px; }
+        h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        h2 { color: #666; margin-top: 30px; }
+        .item { margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; border-radius: 5px; }
+        .title { font-weight: bold; font-size: 16px; color: #333; }
+        .reason { font-weight: bold; color: #e00; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>ZBittorrent 项目改动记录</h1>
+    
+    <div class="item">
+        <div class="title">1. 添加 SHA1 帮助类</div>
+        <div>代码中缺少 SHA1.HashData() 方法，添加了 SHA1Helper 类</div>
+        <div class="reason">改动原因：编译错误 - SHA1 类未定义</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">2. Bencode 支持 long 类型</div>
+        <div>Encode 方法添加 long 类型支持</div>
+        <div class="reason">改动原因：编译错误 - Bencode.Encode 不支持 long</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">3. 修复进度计算除零错误</div>
+        <div>在 percent 计算前添加 total > 0 检查</div>
+        <div class="reason">改动原因：运行时可能除零错误</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">4. 修复 UDP Tracker 端口转换</div>
+        <div>修复 port 字段的字节序转换，重命名变量避免冲突</div>
+        <div class="reason">改动原因：UDP Tracker 端口字段转换错误</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">5. 修复 TargetFramework</div>
+        <div>改为 net10.0-windows</div>
+        <div class="reason">改动原因：CsWinRT 生成错误</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">6. 修复 UDP 变量名冲突</div>
+        <div>重命名 port 变量为 peerPort/peerPortNum</div>
+        <div class="reason">改动原因：变量名在作用域中冲突</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">7. 修复分卷文件合并</div>
+        <div>添加文件存在检查和异常处理</div>
+        <div class="reason">改动原因：下载完后无法合并分卷文件</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">8. 修改为单文件写入</div>
+        <div>HttpDownloader 改为直接写入同一文件，用锁同步，多线程同时下载不同 Range</div>
+        <div class="reason">改动原因：创建多个分卷文件体验不佳</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">9. 添加设置页面</div>
+        <div>XAML 添加 TabControl 页面（下载、设置、日志）</div>
+        <div class="reason">改动原因：需要设置下载选项</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">10. 添加下载模式选择</div>
+        <div>单文件/多分卷 RadioButton</div>
+        <div class="reason">改动原因：选择下载方式</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">11. 添加线程数设置</div>
+        <div>Slider 1-32 线程</div>
+        <div class="reason">改动原因：设置下载线程数</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">12. 添加网速限制</div>
+        <div>TextBox 输入 KB/s，0=不限</div>
+        <div class="reason">改动原因：限制下载速度</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">13. 添加跳转连接</div>
+        <div>设置页面添加跳转按钮，使用系统默认浏览器打开</div>
+        <div class="reason">改动原因：快速打开 Tracker URL</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">14. 修复 nullable 警告</div>
+        <div>事件和属性添加 ? 允许 null</div>
+        <div class="reason">改动原因：编译警告</div>
+    </div>
+    
+    <div class="item">
+        <div class="title">15. 代码设置初始值</div>
+        <div>构造函数设置 txtJumpUrl 默认值</div>
+        <div class="reason">改动原因：跳转链接需在代码中设置</div>
+    </div>
+</body>
+</html>
