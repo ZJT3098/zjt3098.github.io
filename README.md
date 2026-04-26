@@ -1,3 +1,3 @@
 # zjt3098.github.io
-https://zjt3098.github.io:80
-没事点进来你要干嘛啊？
+https://www.redmizjt3098.sbs
+没事点进来你要干嘛啊？这里没有你用的到的东西
